@@ -1,18 +1,21 @@
 import { useEffect, useState } from "react";
 import FormCreate from "./component/FormTask";
 import TodoList from "./component/TodoList";
+import { compareTask } from "./ult/common";
 import "./App.css";
 
 function App() {
   const [tasks, setTasks] = useState([]);
 
   const onCreate = (newTask) => {
-    setTasks([...tasks, newTask]);
+    const dataProcess = [...tasks, newTask].sort(compareTask);
+    setTasks(dataProcess);
   };
 
   const onUpdate = (index, task) => {
-    const dataProcess = [...tasks];
+    let dataProcess = [...tasks];
     dataProcess[index] = task;
+    dataProcess = dataProcess.sort(compareTask);
     setTasks(dataProcess);
   };
 

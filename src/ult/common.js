@@ -1,3 +1,5 @@
+import moment from "moment";
+
 export function removeAccents(str = "") {
   str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a");
   str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "e");
@@ -17,3 +19,7 @@ export function removeAccents(str = "") {
   str = str.replace(/[\u0300-\u036f]/g, "");
   return str.toLowerCase();
 }
+
+export const compareTask = (taskA, taskB) =>
+  moment(taskA.dueDate, "Y-MM-DD").unix() -
+  moment(taskB.dueDate, "Y-MM-DD").unix();

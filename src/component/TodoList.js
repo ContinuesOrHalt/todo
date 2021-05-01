@@ -31,21 +31,23 @@ const TodoList = ({ tasks = [], onDelete, onUpdate, onDeleteMultiple }) => {
 
   return (
     <div className="flex-col h-full">
-      <div className="flex-col p-50 flex-1 overflow-hidden">
-        <p className="text-header text-center">To Do List</p>
+      <div className="flex-col flex-1 overflow-hidden">
+        <div className="pt-50 px-50">
+          <p className="text-header text-center">To Do List</p>
 
-        <input
-          required
-          value={search}
-          placeholder="Search ..."
-          onChange={(e) => setSearch(e.target.value)}
-          className="w-full mb-20"
-        />
+          <input
+            required
+            value={search}
+            placeholder="Search ..."
+            onChange={(e) => setSearch(e.target.value)}
+            className="w-full mb-20"
+          />
+        </div>
 
-        <div className="flex-1 overflow-y-auto">
+        <div className="flex-1 px-50 overflow-y-auto">
           {tasksFilter.map((task, index) => (
             <TodoItem
-              key={index}
+              key={task.id}
               task={task}
               onUpdate={onUpdateTask(index)}
               onSelect={onSelect(index)}

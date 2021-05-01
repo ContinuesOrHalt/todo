@@ -1,9 +1,12 @@
 import React, { useState } from "react";
+import moment from "moment";
+
+const today = moment().format("Y-MM-DD");
 
 const initialState = {
   name: "",
   description: "",
-  dueDate: "",
+  dueDate: today,
   priority: "normal",
 };
 
@@ -22,7 +25,10 @@ const FormTask = ({ value, onChange, isUpdate }) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    onChange(data);
+    onChange({
+      id: moment().unix(),
+      ...data,
+    });
     if (!isUpdate) setData({ ...initialState });
   };
   return (
@@ -56,6 +62,7 @@ const FormTask = ({ value, onChange, isUpdate }) => {
             value={data.dueDate}
             onChange={onChangeValue("dueDate")}
             className="w-full"
+            min={today}
           />
         </div>
 
@@ -68,6 +75,7 @@ const FormTask = ({ value, onChange, isUpdate }) => {
             onChange={onChangeValue("priority")}
             className="w-full"
           >
+            <option value="low">Low</option>
             <option value="normal">Normal</option>
             <option value="hight">Hight</option>
           </select>

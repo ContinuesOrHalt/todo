@@ -105,11 +105,18 @@ input[type="checkbox"] {
   padding: 50px;
 }
 
+.pt-20 {
+  padding-top: 20px;
+}
+.pb-20 {
+  padding-bottom: 20px;
+}
 .pt-50 {
   padding-top: 50px;
 }
 .px-50 {
-  padding: 0 50px;
+  padding-left: 50px;
+  padding-right: 50px;
 }
 
 .mb-20 {
