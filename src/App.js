@@ -86,10 +86,12 @@ function App() {
         console.log("😡coh / file: App.js / line 87 / result", result);
         if (result.credential) {
           console.log(`1`, 1);
+          alert(JSON.stringify(result))
         }
       })
       .catch((error) => {
         console.log("😡coh / file: App.js / line 94 / error", error);
+        alert(JSON.stringify(error))
       });
   }, []);
 
